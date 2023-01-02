@@ -1,4 +1,4 @@
-const documentUrlPatterns = ["https://tolunastart-qab.com/*", "https://tolunastart-qac.com/*", "https://tolunastart-trn.com/*", "https://tolunastart.com/*", "https://project.tolunastart-qab.com/*", "https://project.tolunastart-qac.com/*", "https://project.tolunastart-trn.com/*", "https://project.tolunastart.com/*"];
+const documentUrlPatterns = ["https://www.tolunastart-qab.com/*", "https://tolunastart-qac.com/*", "https://tolunastart-trn.com/*", "https://www.tolunastart.com/*", "https://project.tolunastart-qab.com/*", "https://project.tolunastart-qac.com/*", "https://project.tolunastart-trn.com/*", "https://project.tolunastart.com/*"];
 const targetUrlPatterns = ["https://project.tolunastart-qab.com/wizard/build/*", "https://project.tolunastart-qac.com/wizard/build/*", "https://project.tolunastart-trn.com/wizard/build/*", "https://project.tolunastart.com/wizard/build/*"];
 
 createContextMenuItem("Target");
