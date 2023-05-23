@@ -34,7 +34,7 @@ function onClicked(info, tab) {
 }
 
 function GoToTarget(surveyId, env) {
-    const targetUrl = `https://projects-internal.${env}.com/Sample/target?tqssurveyid=${surveyId}`;
+    const targetUrl = `https://target.projects.${env}.com/Sample/target?tqssurveyid=${surveyId}`;
     chrome.tabs.create({ url: targetUrl });
 }
 
