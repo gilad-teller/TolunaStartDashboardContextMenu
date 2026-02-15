@@ -1,12 +1,34 @@
-const documentUrlPatterns = ["https://tolunastart-qab.com/*", "https://www.tolunastart-qab.com/*", "https://tolunastart-qac.com/*", "https://www.tolunastart-qac.com/*", "https://tolunastart-trn.com/*", "https://www.tolunastart-trn.com/*", "https://tolunastart.com/*", "https://www.tolunastart.com/*", "https://project.tolunastart-qab.com/*", "https://project.tolunastart-qac.com/*", "https://project.tolunastart-trn.com/*", "https://project.tolunastart.com/*"];
-const targetUrlPatterns = ["https://project.tolunastart-qab.com/wizard/build/*", "https://project.tolunastart-qac.com/wizard/build/*", "https://project.tolunastart-trn.com/wizard/build/*", "https://project.tolunastart.com/wizard/build/*"];
+const documentUrlPatterns = [
+    "https://tolunastart-qab.com/*", 
+    "https://www.tolunastart-qab.com/*", 
+    "https://tolunastart-qac.com/*", 
+    "https://www.tolunastart-qac.com/*", 
+    "https://tolunastart-trn.com/*", 
+    "https://www.tolunastart-trn.com/*", 
+    "https://tolunastart.com/*", 
+    "https://www.tolunastart.com/*", 
+    "https://project.tolunastart-qab.com/*", 
+    "https://project.tolunastart-qac.com/*", 
+    "https://project.tolunastart-trn.com/*", 
+    "https://project.tolunastart.com/*"
+];
+const targetUrlPatterns = [
+    "https://project.tolunastart-qab.com/wizard/build/*", 
+    "https://project.tolunastart-qac.com/wizard/build/*", 
+    "https://project.tolunastart-trn.com/wizard/build/*", 
+    "https://project.tolunastart.com/wizard/build/*",
+    "https://www.tolunastart.com/build/*",
+    "https://www.tolunastart-qab.com/build/*",
+    "https://www.tolunastart-qac.com/build/*",
+    "https://www.tolunastart-trn.com/build/*"
+];
 
 createContextMenuItem("Target");
 createContextMenuItem("Define");
 chrome.contextMenus.onClicked.addListener(onClicked);
 
 function createContextMenuItem(name) {
-    const title = `Go to ${name}`;    
+    const title = `Go to ${name}`;
     const id = chrome.contextMenus.create({ "id": name, "title": title, "contexts": ["link"], "documentUrlPatterns": documentUrlPatterns, "targetUrlPatterns": targetUrlPatterns }, () => console.log("chrome.contextMenus.create callback"));
     console.log(`Created context menu item: ${id}`);
 }
@@ -20,7 +42,7 @@ function genericOnClick(info, tab) {
 function onClicked(info, tab) {
     const url = new URL(info.linkUrl);
     const env = url.hostname.split('.')[1];
-    const surveyId = url.pathname.split('/')[3];
+    const surveyId = url.pathname.split('/').pop();
     switch (info.menuItemId) {
         case 'Target':
             GoToTarget(surveyId, env);
@@ -34,7 +56,7 @@ function onClicked(info, tab) {
 }
 
 function GoToTarget(surveyId, env) {
-    const targetUrl = `https://target.projects.${env}.com/Sample/target?tqssurveyid=${surveyId}`;
+    const targetUrl = `https://www.${env}.com/target?tqssurveyid=${surveyId}`;
     chrome.tabs.create({ url: targetUrl });
 }
 
