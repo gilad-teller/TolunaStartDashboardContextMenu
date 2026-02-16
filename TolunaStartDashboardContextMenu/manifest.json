@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
     "name": "Toluna Start Context Menu",
-    "version": "1.0.3",
-    "description": "Extra context menu items for Toluna Start. Currently supporting links to Target and Define from Dashboard and My Projects pages.",
+    "version": "1.1.0",
+    "description": "Adds context menu items for Toluna Start. Quick links to Target and Define pages. Badges for New Build surveys.",
     "icons": {
         "16": "images/icon-16.png",
         "32": "images/icon-32.png",
@@ -14,5 +14,25 @@
     },
     "permissions": [
         "contextMenus"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://tolunastart-qab.com/*",
+                "https://www.tolunastart-qab.com/*",
+                "https://tolunastart-qac.com/*",
+                "https://www.tolunastart-qac.com/*",
+                "https://tolunastart-trn.com/*",
+                "https://www.tolunastart-trn.com/*",
+                "https://tolunastart.com/*",
+                "https://www.tolunastart.com/*",
+                "https://project.tolunastart-qab.com/*",
+                "https://project.tolunastart-qac.com/*",
+                "https://project.tolunastart-trn.com/*",
+                "https://project.tolunastart.com/*"
+            ],
+            "js": ["scripts/content.js"],
+            "run_at": "document_idle"
+        }
     ]
 }
